@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faIgloo, faRocket, faSpaceShuttle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,6 +12,8 @@ const StyledTabMenu = styled(TabMenu)`
   display: flex;
 `
 
+const colors = ['#D00000', '#FFBA08', '#3F88C5']
+
 const StyledTabMenuItem = styled(TabMenuItem)`
   width: 60px;
   height: 60px;
@@ -21,6 +22,12 @@ const StyledTabMenuItem = styled(TabMenuItem)`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  color: ${props => props.isActive ? colors[props.index] : '#A0A4B8'};
+`
+
+const StyledTabs = styled(Tabs)`
+  background-color: #E5ECF4;
+  flex: 1;
 `
 
 const StyledTab = styled(Tab)`
@@ -31,29 +38,30 @@ const StyledTab = styled(Tab)`
 const StyledTabPanel = styled(TabPanel)`
   width: 500px;
   height: 500px;
-  border: 1px solid #A0A4B8;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 5px 5px 30px 0px rgba(0,0,0,0.75);
 `
 
 class App extends Component {
   render() {
+
+
     return (
       <div className="App">
         <StyledTabPanel>
           <StyledTabMenu>
             <StyledTabMenuItem>
-              <FontAwesomeIcon icon="igloo" />
-                Igloo
+              <FontAwesomeIcon icon="igloo" size="2x" />
             </StyledTabMenuItem>
             <StyledTabMenuItem>
-              <FontAwesomeIcon icon="space-shuttle" />
-                Shuttle
+              <FontAwesomeIcon icon="space-shuttle" size="2x" />
             </StyledTabMenuItem>
             <StyledTabMenuItem>
-              <FontAwesomeIcon icon="rocket" />
-                Rocket
+              <FontAwesomeIcon icon="rocket" size="2x" />
             </StyledTabMenuItem>  
           </StyledTabMenu>
-          <Tabs>
+          <StyledTabs>
             <StyledTab>
               Something involving igloo's
             </StyledTab>
@@ -63,7 +71,7 @@ class App extends Component {
             <StyledTab>
               Something involving rockets
             </StyledTab>
-          </Tabs>
+          </StyledTabs>
         </StyledTabPanel>
       </div>
     );

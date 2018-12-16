@@ -6,7 +6,7 @@ class Tabs extends React.Component {
 
   render = () => {
     return (
-      <div>
+      <div className={this.props.className}>
         {
           React.Children.map(this.props.children, (item, index) => {
             if(index === this.context.activeIndex){
